@@ -10,8 +10,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [prevPage, setPrevPage] = useState<string | null>(null); // ✅ Fixed missing state
-  const [nextPage, setNextPage] = useState<string | null>(null); // ✅ Fixed missing state
+  const [prevPage, setPrevPage] = useState<string | null>(null);
+  const [nextPage, setNextPage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleSearch = async (page: number = 1) => {
@@ -26,7 +26,6 @@ const Home = () => {
       setCurrentPage(response.pagination.currentPage);
       setTotalPages(response.pagination.totalPages);
 
-      // ✅ Store prevPage & nextPage from API response
       setPrevPage(response.pagination.prevPage);
       setNextPage(response.pagination.nextPage);
     } catch (err) {
@@ -113,7 +112,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* ✅ Fixed Pagination Buttons */}
       {totalPages > 1 && (
         <div className="flex justify-center space-x-4 mt-8">
           <button
