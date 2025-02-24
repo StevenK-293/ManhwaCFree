@@ -143,16 +143,15 @@ const MangaDetails: React.FC = () => {
         </div>
       </div>
 
-      {/* ✅ Fixed the chapter list to use proper routing */}
       <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 shadow-xl">
         <h2 className="text-xl font-semibold mb-4 text-white">Chapters</h2>
         <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2">
           {details.chapters.map((chapter, index) => {
-  const chapterSlug = chapter.chapterUrl?.split('/').pop(); // ✅ Get correct chapter slug
+  const chapterSlug = chapter.chapterUrl?.split('/').pop();
   return (
     <Link
-      key={`${slug}-${chapterSlug}-${index}`} // ✅ Unique key
-      to={chapterSlug ? `/manga/${slug}/${chapterSlug}` : '#'} // ✅ Prevent undefined link
+      key={`${slug}-${chapterSlug}-${index}`}
+      to={chapterSlug ? `/manga/${slug}/${chapterSlug}` : '#'}
       className={`flex items-center justify-between p-4 bg-gray-700/50 rounded-lg ${
         chapterSlug ? 'hover:bg-gray-600 transition-colors' : 'opacity-50 cursor-not-allowed'
       } group`}
