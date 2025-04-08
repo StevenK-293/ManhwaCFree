@@ -12,7 +12,6 @@
 
   2. Security
     - Enable RLS on `reading_list` table
-    - Add policies for authenticated users to manage their reading list
 */
 
 CREATE TABLE reading_list (
