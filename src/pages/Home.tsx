@@ -14,18 +14,17 @@ const Home = () => {
   const [nextPage, setNextPage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSearch = async (page: number = 1) => {
+  const handleSearch = async (page: number = currentPage) => {
     if (!query.trim()) return;
-    
+
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await searchManga(query, page);
       setResults(response.results);
       setCurrentPage(response.pagination.currentPage);
       setTotalPages(response.pagination.totalPages);
-
       setPrevPage(response.pagination.prevPage);
       setNextPage(response.pagination.nextPage);
     } catch (err) {
@@ -60,6 +59,12 @@ const Home = () => {
       {error && (
         <div className="text-center text-red-400 bg-red-900/20 py-3 px-4 rounded-lg">
           {error}
+          <Link
+            to="/edit" // Navigate to an Edit page (will implent later mented)
+            className="text-purple-500 hover:underline ml-2"
+          >
+            Edit Query
+          </Link>
         </div>
       )}
 
@@ -122,7 +127,7 @@ const Home = () => {
             Previous
           </button>
 
-          <span className="px-4 py-2">
+          <span className="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-lg">
             Page {currentPage} of {totalPages}
           </span>
 
