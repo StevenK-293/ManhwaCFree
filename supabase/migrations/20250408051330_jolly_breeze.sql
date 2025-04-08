@@ -1,6 +1,4 @@
 /*
-  # Create reading list table
-
   1. New Tables
     - `reading_list`
       - `id` (uuid, primary key)
